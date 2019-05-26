@@ -1,0 +1,10 @@
+dri2proto-2.8
+glproto-1.4.17
+libdrm-2.4.98
+libpciaccess-0.14
+libpthread-stubs-0.4
+libXau-1.0.9
+libxcb-1.13.1
+mesa-19.0.5
+xcb-proto-1.13
+xproto-7.0.31
