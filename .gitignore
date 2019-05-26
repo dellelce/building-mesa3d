@@ -1,2 +1,13 @@
 *.bz2
+*.xz
 i_0
+mesa-19.0.5/
+libxcb-1.13.1/
+libpthread-stubs-0.4/
+libXau-1.0.9/
+xproto-7.0.31/
+xcb-proto-1.13/
+dri2proto-2.8/
+libdrm-2.4.98/
+libpciaccess-0.14/
+glproto-1.4.17/
