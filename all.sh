@@ -1,12 +1,44 @@
 #!/bin/bash
+
+## FUNCTIONS ##
+
+run()
+{
+ typeset fn="$1"
+ typeset name=${fn#build_}
+
+ name=${name%.sh}
+ typeset log="${name}.log"
+
+ echo -n "Running $name"
+ ./${fn} > ${log} 2>&1 
+ rc=$?
+
+ [ "$rc" -ne 0 ] &&
+ {
+  echo "..fail: rc=$rc"
+  echo
+  ls -lt "$log"
+  tail -20 "${log}"
+  return $rc
+ } ||
+ {
+  echo "..success"
+ }
+}
+
+## ENV ##
+
 export PATH=.:$PATH
 
+## MAIN ##
+
 #build_xcbproto.sh &&
-build_glproto.sh &&
-build_pciaccess.sh &&
-build_libdrm.sh &&
-build_dri2proto.sh &&
-build_mesa.sh
+run build_glproto.sh &&
+run build_pciaccess.sh &&
+run build_libdrm.sh &&
+run build_dri2proto.sh &&
+run build_mesa.sh
 
 #build_libxcb.sh &&
 #build_pthstubs.sh &&
