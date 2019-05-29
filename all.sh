@@ -10,7 +10,7 @@ run()
  name=${name%.sh}
  typeset log="${name}.log"
 
- echo -n "Running $name"
+ echo -n "Building $name"
  ./${fn} > ${log} 2>&1 
  rc=$?
 
@@ -38,6 +38,17 @@ run build_glproto.sh &&
 run build_pciaccess.sh &&
 run build_libdrm.sh &&
 run build_dri2proto.sh &&
+run build_xproto.sh &&
+run build_xextproto.sh &&
+run build_xtrans.sh &&
+run build_xcbproto.sh &&
+run build_pthstubs.sh &&
+run build_xau.sh &&
+run build_libxcb.sh &&
+run build_inputproto.sh &&
+run build_kbproto.sh &&
+run build_x11.sh &&
+run build_xext.sh &&
 run build_mesa.sh
 
 #build_libxcb.sh &&
