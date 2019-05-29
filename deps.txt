@@ -1,7 +1,30 @@
 
 mesa
+ +-> dri2proto
+ +-> glproto
+ +-> libdrm
+      +-> pciaccess
+ +-> x11
+     +-> xproto
+     +-> xextproto
+     +-> xtrans
+     +-> xcb
+         +-> xcbproto
+             +-> pthreads-stubs
+             +-> xau
+     +-> kbproto
+     +-> inputproto
+ +-> xdamage
+     +-> damageproto
+     x-> fixesproto
+     x-> xfixes
+ +-> xxf86vm
+     +-> xf86vidmodeproto
+ +-> xshmfence
+     +-> xorgmacros
  +-> randr
-      +-> librandr
-           +-> randrproto
-           +-> xrender
-           +-> renderproto
+     +-> librandr
+         +-> randrproto
+         +-> xrender
+             +-> renderproto
+ +-> expat2_1
