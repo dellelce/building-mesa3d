@@ -1,7 +1,7 @@
 
 ## ENV ##
 
-id="libX11-1.6.7"
+id="libdrm-2.4.98"
 dir="/tmp/opengl/$id"
 prefix="/tmp/opengl/i_0"
 
@@ -9,4 +9,4 @@ prefix="/tmp/opengl/i_0"
 
 cd "$dir" || exit $?
 export PKG_CONFIG_PATH=${prefix}/lib/pkgconfig
-./configure --prefix=${prefix}  && make -j4 && make install
+./configure --prefix=${prefix}  && make && make install

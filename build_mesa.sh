@@ -9,4 +9,6 @@ prefix="/tmp/opengl/i_0"
 
 cd "$dir" || exit $?
 export PKG_CONFIG_PATH=${prefix}/lib/pkgconfig
-./configure --prefix=${prefix} --enable-autotools --disable-xlib-lease
+./configure --prefix=${prefix} --enable-autotools \
+            --with-gallium-drivers=r600,svga,swrast &&
+make && make install

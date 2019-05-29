@@ -9,21 +9,29 @@ run()
 
  name=${name%.sh}
  typeset log="${name}.log"
+ typeset state="${name}.built"
+
+ [ -f "$state" ] && { echo "Building $name..already done"; return 0; }
 
  echo -n "Building $name"
+ typeset start="$(date +%s)"
  ./${fn} > ${log} 2>&1 
  rc=$?
+ typeset end="$(date +%s)"
+ typeset elapsed
+ let elapsed="(( $end - $start ))"
 
  [ "$rc" -ne 0 ] &&
  {
-  echo "..fail: rc=$rc"
+  echo "..fail: rc=$rc [elapsed: $elapsed]"
   echo
   ls -lt "$log"
   tail -20 "${log}"
   return $rc
  } ||
  {
-  echo "..success"
+  echo "..success [elapsed: $elapsed]"
+  touch "$state"
  }
 }
 
@@ -49,25 +57,17 @@ run build_inputproto.sh &&
 run build_kbproto.sh &&
 run build_x11.sh &&
 run build_xext.sh &&
+run build_damageproto.sh &&
+run build_fixesproto.sh &&
+run build_xfixes.sh &&
+run build_xdamage.sh &&
+run build_x86vmp.sh &&
+run build_xxf86vm.sh &&
+run build_xorgmacros.sh &&
+run build_libxshmfence.sh &&
+run build_randrproto.sh &&
+run build_renderproto.sh &&
+run build_libxrender.sh &&
+run build_libxrandr.sh &&
+run build_expat.sh &&
 run build_mesa.sh
-
-#build_libxcb.sh &&
-#build_pthstubs.sh &&
-#build_xau.sh &&
-#build_xproto.sh &&
-#build_x11.sh &&
-#build_xext.sh &&
-#build_xextproto.sh &&
-#build_kbproto.sh &&
-#build_inputproto.sh &&
-#build_xdamage.sh &&
-#build_damageproto.sh &&
-#build_xfixes.sh &&
-#build_fixesproto.sh &&
-#build_xxf86vm.sh &&
-#build_x86vmp.sh &&
-#build_xtrans.sh &&
-#build_xorgmacros.sh &&
-#build_libxshmfence.sh &&
-#build_xrandr.sh &&
-#build_libxrandr.sh
