@@ -9,5 +9,8 @@ prefix="/tmp/opengl/i_0"
 
 cd "$dir" || exit $?
 export PKG_CONFIG_PATH=${prefix}/lib/pkgconfig
-./configure --prefix=${prefix}  && make && make install
-[ -f "${prefix}/shared/"
+./configure --prefix=${prefix}  && make && make install &&
+[ -f "${prefix}/share/pkgconfig/xtrans.pc" ] &&
+{
+ cp "${prefix}/share/pkgconfig/xtrans.pc" "${prefix}/lib/pkgconfig/xtrans.pc"
+}
