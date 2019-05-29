@@ -1,0 +1,7 @@
+
+mesa
+ +-> randr
+      +-> librandr
+           +-> randrproto
+           +-> xrender
+           +-> renderproto
